@@ -3,23 +3,23 @@ tags:
   - fragment
 ---
 # 기본적인 개념 정리
-[[0/Excalidraw/Shared Resource|Shared Resource]]
+[[!Resources/Excalidraw/Shared Resource|Shared Resource]]
 **프로세스(Process)** : 운영체제에서 실행중인 프로그램의 **작업단위** 
 좀더 쉽게 말하면 프로그램이 실제로
 실행되고 있는 모습을 프로세스라고 할 수 있다.
-![[0/Excalidraw/Shared Resource#^group=iBwCvRCgnJnGnoxhW5SBb|700]]
+![[!Resources/Excalidraw/Shared Resource#^group=iBwCvRCgnJnGnoxhW5SBb|700]]
 그리고 일반적으로 한 프로세스에 반드시 **한개 이상의 스레드가** 있다. ^26cc31
 
 **스레드(Thread)** : 프로세스 보다 **더 작은 작업단위**
 프로세스가 작업을 수행하는 동안, 스레드는 그 작업 내에서 여러 하위 작업을 맡음
-![[0/Excalidraw/Shared Resource#^group=ZSb2iV_jZbQW0NuT3hgJa||700]]
+![[!Resources/Excalidraw/Shared Resource#^group=ZSb2iV_jZbQW0NuT3hgJa||700]]
 
 프로세스 하나에 여러개의 스레드가 존재할 수 있다.
 이를 **멀티스레딩 (Multi-threading)** 이라고 한다.
 
 여러 하위작업들 동시에 처리하고, 스레드끼리 **서로 자원을 공유**하기 때문에 작업의 효율이 굉장히 올라간다. 
 스레드가 함께 접근할 수 있는 메모리, 데이터 등의 자원을 **공유자원(Shared resource)** 라고 한다.
-![[0/Excalidraw/Shared Resource#^group=54FspADZ5RXyx6MtGP5lK|700]]
+![[!Resources/Excalidraw/Shared Resource#^group=54FspADZ5RXyx6MtGP5lK|700]]
 
 # 공유자원 & 임계영역
 그러나 멀티스레딩은 문제점이 있는데, 각 스레드의 모든 흐름이 **동시에**, **각자** 작동한다는 점이다.
@@ -29,7 +29,7 @@ tags:
 
 심지어 프로세스도 하나만 있는것이 아니라 여러가지 프로세스를 동시에 실행할 수 있다. 
 이를 **멀티프로세싱** 또는 **멀티테스킹**이라고 한다.
-![[0/Excalidraw/Shared Resource#^group=_EoZpsdeKYXsJjLUan9Sv|600]]
+![[!Resources/Excalidraw/Shared Resource#^group=_EoZpsdeKYXsJjLUan9Sv|600]]
 
 
 이렇게 복잡하게 멀티테스킹과 멀티스레딩이 이루어지는 상황에서 
@@ -47,7 +47,7 @@ tags:
 #### 뮤텍스 (mutex)
 가장 간단하고 직관적인 동기화 도구
 한번에 하나의 스레드만 공유자원에 접근하고, 사용한 후에 다음 스레드가 공유자원에 접근하는 방식
-![[0/Excalidraw/Shared Resource#^group=_4ihUwbtd9Pyn-Nofle_n|700]]
+![[!Resources/Excalidraw/Shared Resource#^group=_4ihUwbtd9Pyn-Nofle_n|700]]
 
 뮤텍스 방식을 자바코드로 구현하면 요런 느낌인데,
 ~~~java
@@ -73,7 +73,7 @@ CPU의 성능을 낭비하게 된다.
 공유자원을 분할해서 더 많은 스레드가 동시에 이용할 수 있도록 함.
 `lock()` - `unlock()` 로직대신에`wait()` - `signal()` 로직을 사용한다. 
 0과 1 만 존재하던 뮤텍스와 달리 세마포어는 양의 정수 값을 갖는다.
-![[0/Excalidraw/Shared Resource#^group=uhJXRshM3rt7RrTN0ngNf|700]]
+![[!Resources/Excalidraw/Shared Resource#^group=uhJXRshM3rt7RrTN0ngNf|700]]
 
 화장실로 비유하자면
 - 뮤텍스 : 한명이 볼일을 볼때 화장실 전체를 잠금 - 앞사람에게 화장실 열쇠를 받아야 뒷사람이 화장실 사용가능
@@ -83,7 +83,7 @@ CPU의 성능을 낭비하게 된다.
 **인터페이스와 큐(queue) 활용**
 공유자원과 스레드의 연결이 직접적으로 일어나지 않게 막는다.
 흡사 Spring에서의 IoC처럼 직접적인 의존관계를 만들지 않는것과 비슷한 느낌이다. [[0. 오브젝트와 의존관계#인터페이스 도입|IOC Interface]]
-![[0/Excalidraw/Shared Resource#^group=3-RPSlYL-ua7tmsrMcMZb|700]]
+![[!Resources/Excalidraw/Shared Resource#^group=3-RPSlYL-ua7tmsrMcMZb|700]]
 
 동시성을 처리하는 방법에 있어서 완성형이라고 할 수 있다.
 타 스레드에게 자원을 넘겨받기 때문에 Lock같은 개념이 없어도 자동으로 상호배제가 된다.
@@ -92,7 +92,7 @@ CPU의 성능을 낭비하게 된다.
 ---
 # 교착상태
 Deadlock
-![[0/Excalidraw/Shared Resource#^group=gCh-jmTq2kyz9vVtonOJa|700]]
+![[!Resources/Excalidraw/Shared Resource#^group=gCh-jmTq2kyz9vVtonOJa|700]]
 말 그대로 서로 무한히 공유자원을 기다리며 중단된 상태
 A는 B가 가진 자원을 요청, B는 A가 가진 자원을 요청
 둘다 Lock을 풀지 않음
