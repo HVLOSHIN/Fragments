@@ -41,7 +41,7 @@ public class UserDto {
     private String password;
 ~~~
 
-[[1. SpringBoot 주요 개념#DAO, DTO, VO|DTO]] : 계층간 데이터 교환을 위한 객체
+[[2. SpringBoot 주요 개념#DAO, DTO, VO|DTO]] : 계층간 데이터 교환을 위한 객체
 [[8. DataBase Modeling#Entity|Entity]] : 데이터 베이스에 저장되는 객체 
 
 ### DTO와 Entity 분리의 장점
