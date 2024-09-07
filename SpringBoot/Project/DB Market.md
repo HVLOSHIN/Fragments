@@ -424,6 +424,7 @@ public void isSessionAvailable(Model model) {
 }
 ~~~
 
+[[Front]]
 ~~~HTML hl:2
 <div class="container mx-auto px-4 flex justify-end items-left" 
 	 th:if="${isSessionAvailable != 'false'}">  
