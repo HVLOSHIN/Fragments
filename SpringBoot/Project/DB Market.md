@@ -485,7 +485,48 @@ public String logout(HttpServletRequest httpServletRequest, Model model) {
 [[1. Servlet#세션 관리 기능|로그인 세션]]을 조회해서 적절한 페이지로 넘겨준다.
 대부분의 페이지가 세션을 필요로 해서, 세션이 없는 상태에서 페이지를 왔다갔다 하면 의도치 않은 오류가 생긴다.
 
-# 11. 다음에 적용해 보면 좋을 것들
+
+# 11. 아이템 그리드 형식으로 배열
+~~~HTML hl:2,23
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4">  
+    <div th:each="item : ${items}" class="relative group">  
+        <a th:href="@{/items/{id}(id=${item.itemId})}" class="block">  
+            <img th:src="${item.imagePath}" alt="image" 
+		        class="w-full h-full object-cover rounded-lg transition duration-300 transform 
+				    group-hover:scale-105">  
+        </a>  
+  
+        <div class="absolute bottom-0 left-0 right-0 p-4 bg-white bg-opacity-80 
+	        rounded-b-lg transition duration-300 opacity-0 group-hover:opacity-100">  
+            <a th:href="@{/items/{id}(id=${item.itemId})}" class="block">  
+                <h2 class="text-lg font-medium text-center">  
+                    <span th:text="${item.name}"></span>  
+                </h2>  
+                <p class="text-gray-700 text-center">  
+                    <span th:text="${item.category}"></span>  
+                </p>  
+                <p class="text-gray-700 text-center">  
+                    가격: <span th:text="${item.price}"></span>원  
+                </p>  
+            </a>  
+        </div>  
+    </div>  
+</div>
+~~~
+
+# 12. Header, Footer
+[[1.  MVC#뷰 템플릿 레이아웃|뷰 템플릿 헤더, 푸터]] [[15. Fragment|Fragment 설정]] 
+~~~HTML
+<html xmlns:th="http://www.thymeleaf.org"  
+      th:replace="~{fragments/layout :: layout(~{::title}, ~{::main})}">
+~~~
+
+
+
+
+
+
+# 다음에 적용해 보면 좋을 것들
 - API 
 - AOP
 - REST API - JSON 활용
@@ -493,6 +534,9 @@ public String logout(HttpServletRequest httpServletRequest, Model model) {
 - @Transactional
 - `@RequestBody` 로 JSON을 객체로 받아서 `@ResponseBody` 로 JSON 반환 -> [[8. Request#HTTP 요청 메시지 - JSON|참고]]
 - DB [[6. JOIN|JOIN]] 같은 복잡한 요소도 좀더 부딪혀봐야 실력이 늘것같다.
+- 회원가입 - 불가능한 폼 : 빨간박스, 가능한 폼 : 초록 박스 및 문구
 
+- 개선된 프론트 실력
+	- [[4. Object#편의 객체|세션]]을 객체로 가져올 수 있다.
 
 
