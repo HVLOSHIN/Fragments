@@ -192,9 +192,8 @@ public class UserFilter implements Filter {
         return !PatternMatchUtils.simpleMatch(whiteList,requestURL);  
     }
 ~~~
+[[5. Servlet Filter|Filter]]활용.
 세션과 관련된 부분은 따로 클래스로 빼도 좋을 듯 - [[0. 오브젝트와 의존관계#리펙토링 관계설정 책임의 분리|관심사의 분리]]
-
-
 # 5. 회원가입
 컨트롤러
 ~~~java
@@ -483,7 +482,7 @@ public String logout(HttpServletRequest httpServletRequest, Model model) {
 ~~~
 
 [[1. Servlet#세션 관리 기능|로그인 세션]]을 조회해서 적절한 페이지로 넘겨준다.
-대부분의 페이지가 세션을 필요로 해서, 세션이 없는 상태에서 페이지를 왔다갔다 하면 의도치 않은 오류가 생긴다.
+대부분의 페이지가 [[3. Session 원리|세션]]을 필요로 해서, 세션이 없는 상태에서 페이지를 왔다갔다 하면 의도치 않은 오류가 생긴다.
 
 
 # 11. 아이템 그리드 형식으로 배열
